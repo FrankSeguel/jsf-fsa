@@ -1,6 +1,8 @@
 package cl.jsf.fsa.exception;
 
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -8,9 +10,13 @@ import java.util.List;
  */
 public class BusinessException extends JsfException {
 
+    @Getter
+    @Setter
     private int p_cod_err;
+    @Getter
+    @Setter
     private String p_des_err;
-
+    @Setter
     private List<BusinessExceptionDetail> errores;
 
     public BusinessException() {
@@ -33,22 +39,6 @@ public class BusinessException extends JsfException {
 
     public BusinessException(List<BusinessExceptionDetail> errores) {
         this.errores = errores;
-    }
-
-    public String getP_des_err() {
-        return p_des_err;
-    }
-
-    public List<BusinessExceptionDetail> getErrores() {
-        return errores;
-    }
-
-    public int getP_cod_err() {
-        return p_cod_err;
-    }
-
-    public void setP_cod_err(int p_cod_err) {
-        this.p_cod_err = p_cod_err;
     }
 
 }

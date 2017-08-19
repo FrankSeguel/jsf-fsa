@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.beanutils.PropertyUtils;
 
 /**
@@ -19,21 +21,15 @@ import org.apache.commons.beanutils.PropertyUtils;
  */
 public class DropDownBean<T> extends GenericValueLabelBean<T> {
     
+    @Getter
+    @Setter
     private List<T> items;
 
     public DropDownBean() {
         super();
         this.items = new ArrayList<T>();
     }
-
-    public List<T> getItems() {
-        return items;
-    }
-
-    public void setItems(List<T> items) {
-        this.items = items;
-    }
-
+    
     /**
      * Metodos para que funcione lo antiguo *
      */

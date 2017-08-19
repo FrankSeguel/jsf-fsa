@@ -2,6 +2,8 @@ package cl.jsf.fsa.components;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.ObjectUtils;
 
@@ -15,8 +17,12 @@ public class GenericValueLabelBean<T> {
     
     private T value = null;
     private T oldValue = null;
+    @Getter
+    @Setter
     private String label = null;
     private List<ValueLabelChangeListener<T>> changeListeners = null;
+    @Getter
+    @Setter
     private String labelProperty = null;
 
     public GenericValueLabelBean() {
@@ -55,14 +61,6 @@ public class GenericValueLabelBean<T> {
         this.oldValue = value;
     }
 
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
     public T getOldValue() {
         return oldValue;
     }
@@ -73,14 +71,6 @@ public class GenericValueLabelBean<T> {
 
     public void addChangeListener(ValueLabelChangeListener changeListener) {
         this.changeListeners.add(changeListener);
-    }
-
-    public String getLabelProperty() {
-        return labelProperty;
-    }
-
-    public void setLabelProperty(String labelProperty) {
-        this.labelProperty = labelProperty;
     }
 
 }

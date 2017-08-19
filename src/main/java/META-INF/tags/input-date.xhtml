@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <c:if test="${empty readonly}">
+        <c:set var="readonly" value="false" />
+    </c:if>
+
+    <c:if test="${empty required}">
+        <c:set var="required" value="false" />
+    </c:if>
+
+    <c:if test="${empty rendered}">
+        <c:set var="rendered" value="true" />
+    </c:if>
+
+    <c:if test="${empty size}">
+        <c:set var="size" value="10" />
+    </c:if>
+
+    <c:if test="${empty maxlength}">
+        <c:set var="maxlength" value="10" />
+    </c:if>
+
+    <c:if test="${empty stylesclass}">
+        <c:set var="stylesclass" value="form-control" />
+    </c:if>
+
+    <c:if test="#{!readonly}">
+        <h:inputText id="#{idcomponent}" value="${value}" t:type="date" class="#{stylesclass}" 
+                     rendered="${rendered}" required="${required}"
+                     size="#{size}" maxlength="#{maxlength}"
+                     requiredMessage="Fecha es requerida" validatorMessage="Fecha no cumple con el formato.">
+            <f:convertDateTime pattern="yyyy-MM-dd" timeZone="America/Santiago"/>
+            <ui:insert/>
+        </h:inputText>
+        <h:message id="#{idcomponent}requiredText" rendered="#{required and rendered}" for="#{idcomponent}" 
+                   showDetail="true" showSummary="false" style="font-size: 9px;padding-top: 2px;padding-bottom: 2px;"
+                   infoClass="alert alert-info alert-dismissible fade in"
+                   infoStyle="alert alert-info alert-dismissible fade in"
+                   errorClass="alert alert-danger alert-dismissible fade in"
+                   warnClass="alert alert-warning alert-dismissible fade in"/>
+    </c:if>
+    <c:if test="#{readonly}">
+        <h:outputText id="${idcomponent}" value="${value}" class="form-control" >
+            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Santiago"/>
+            <ui:insert/>
+        </h:outputText>
+    </c:if>
+
+</ui:composition>
